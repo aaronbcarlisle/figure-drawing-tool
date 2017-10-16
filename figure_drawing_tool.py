@@ -67,7 +67,7 @@ class FigureDrawingTool(QtGui.QWidget):
     def _build_canvas(self):
 
         # set styling
-        style_sheet_file = QtCore.QFile(resource_path('aaron_dark.qss'))
+        style_sheet_file = QtCore.QFile(resource_path('dark.qss'))
         style_sheet_file.open(QtCore.QFile.ReadOnly)
         self.setStyleSheet(str(style_sheet_file.readAll()))
 
