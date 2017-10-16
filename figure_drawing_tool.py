@@ -25,7 +25,6 @@ from random import shuffle
 # third-party
 from PySide import QtGui, QtCore
 
-
 #------------------------------------------------------------------------------#
 #--------------------------------------------------------------------- UTILS --#
 
@@ -274,8 +273,8 @@ class FigureDrawingTool(QtGui.QWidget):
             if not full_path.endswith(self.supported_formats):
                 continue
             self._add_image_to_canvas(full_path)
-
             break
+            
         self._reset_clock()
 
     def _add_image_to_canvas(self, full_path):
@@ -287,12 +286,12 @@ class FigureDrawingTool(QtGui.QWidget):
         size = pixmap.size()
         canvas.setPixmap(pixmap)
 
+        
 class Label(QtGui.QLabel):
     def __init__(self, img):
         super(Label, self).__init__()
         self.setFrameStyle(QtGui.QFrame.StyledPanel)
         self.pixmap = QtGui.QPixmap(img)
-
 
     def paintEvent(self, event):
         size = self.size()
