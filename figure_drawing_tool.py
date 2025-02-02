@@ -22,7 +22,9 @@ from PySide import QtGui, QtCore
 
 
 def convert_path(path):
-    """Converts to Windows readable path"""
+    """
+    Converts to Windows readable path
+    """
     separator = os.sep
     if separator != "/":
         path = path.replace(os.sep, "/")
