@@ -32,8 +32,7 @@ def convert_path(path):
 
 
 def build_path(folder, name):
-    return convert_path(os.path.join(os.path.dirname(os.path.realpath(__file__)),
-                                                     folder, name))
+    return convert_path(os.path.join(os.path.dirname(os.path.realpath(__file__)),                                                     folder, name))
 
 
 def update_line_edit(line_edit_widget):
