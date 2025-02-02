@@ -1,7 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-#------------------------------------------------------------------------------#
-#-------------------------------------------------------------------- HEADER --#
 
 """
 :author:
@@ -15,9 +13,6 @@
     python figure_drawing_tool.py
 """
 
-#------------------------------------------------------------------------------#
-#------------------------------------------------------------------- IMPORTS --#
-
 # built-in
 import os, sys, timeit
 from random import shuffle
@@ -25,8 +20,7 @@ from random import shuffle
 # third-party
 from PySide import QtGui, QtCore
 
-#------------------------------------------------------------------------------#
-#--------------------------------------------------------------------- UTILS --#
+
 
 def convert_path(path):
     """Converts to Windows readable path"""
@@ -35,9 +29,11 @@ def convert_path(path):
         path = path.replace(os.sep, "/")
     return path
 
+
 def build_path(folder, name):
     return convert_path(os.path.join(os.path.dirname(os.path.realpath(__file__)),
                                                      folder, name))
+
 
 def update_line_edit(line_edit_widget):
     """Finds path and populates QLineEdit"""
@@ -45,13 +41,11 @@ def update_line_edit(line_edit_widget):
     if path:
         return line_edit_widget.setText(path)
 
+
 def resource_path(relative_path):
     if hasattr(sys, '_MEIPASS'):
         return os.path.join(sys._MEIPASS, relative_path)
     return os.path.join(os.path.abspath("."), relative_path)
-
-#------------------------------------------------------------------------------#
-#------------------------------------------------------------------- CLASSES --#
 
 
 class FigureDrawingTool(QtGui.QWidget):
@@ -64,7 +58,6 @@ class FigureDrawingTool(QtGui.QWidget):
         self.supported_formats = tuple(QtGui.QImageReader.supportedImageFormats())
 
     def _build_canvas(self):
-
         # set styling
         style_sheet_file = QtCore.QFile(resource_path('dark.qss'))
         style_sheet_file.open(QtCore.QFile.ReadOnly)
@@ -305,10 +298,12 @@ class Label(QtGui.QLabel):
         point.setY((size.height() - scaled.height())/2)
         painter.drawPixmap(point, scaled)
 
+
 def main():
     app = QtGui.QApplication(sys.argv)
     tool = FigureDrawingTool()
     sys.exit(app.exec_())
+
 
 if __name__ == "__main__":
     main()
