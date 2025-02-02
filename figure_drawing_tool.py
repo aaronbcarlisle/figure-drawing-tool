@@ -21,7 +21,6 @@ from random import shuffle
 from PySide import QtGui, QtCore
 
 
-
 def convert_path(path):
     """Converts to Windows readable path"""
     separator = os.sep
