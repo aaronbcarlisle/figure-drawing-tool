@@ -53,8 +53,6 @@ def resource_path(relative_path):
 class FigureDrawingTool(QtGui.QWidget):
     def __init__(self):
         super(FigureDrawingTool, self).__init__()
-
-        # globals
         self._build_canvas()
         self.elapse_time = None
         self.supported_formats = tuple(QtGui.QImageReader.supportedImageFormats())
