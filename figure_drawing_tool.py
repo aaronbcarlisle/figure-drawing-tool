@@ -36,7 +36,9 @@ def build_path(folder, name):
 
 
 def update_line_edit(line_edit_widget):
-    """Finds path and populates QLineEdit"""
+    """
+    Finds path and populates QLineEdit
+    """
     path = QtGui.QFileDialog.getExistingDirectory()
     if path:
         return line_edit_widget.setText(path)
