@@ -2,11 +2,18 @@
 
 block_cipher = None
 
-
 a = Analysis(['figure_drawing_tool.py'],
-             pathex=['C:\\figure_drawing_tool'],
+             pathex=['.'],
              binaries=None,
-             hiddenimports=[],
+             datas=[
+                 ('start_image.jpg', '.'),
+                 ('dark.qss', '.'),
+             ],
+             hiddenimports=[
+                 'PySide6.QtCore',
+                 'PySide6.QtGui',
+                 'PySide6.QtWidgets',
+             ],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -14,12 +21,9 @@ a = Analysis(['figure_drawing_tool.py'],
              win_private_assemblies=False,
              cipher=block_cipher)
 
-# add files to datas
-a.datas += [ ('start_image.jpg', '.\\start_image.jpg', 'DATA')]
-a.datas += [ ('dark.qss', '.\\dark.qss', 'DATA')]
-
 pyz = PYZ(a.pure, a.zipped_data,
-             cipher=block_cipher)
+          cipher=block_cipher)
+
 exe = EXE(pyz,
           a.scripts,
           a.binaries,

@@ -2,12 +2,18 @@
 
 block_cipher = None
 
-
 a = Analysis(['figure_drawing_tool.py'],
-             pathex=['/figure_drawing_tool'],
+             pathex=['.'],
              binaries=None,
-             datas=None,
-             hiddenimports=[],
+             datas=[
+                 ('start_image.jpg', '.'),
+                 ('dark.qss', '.'),
+             ],
+             hiddenimports=[
+                 'PySide6.QtCore',
+                 'PySide6.QtGui',
+                 'PySide6.QtWidgets',
+             ],
              hookspath=[],
              runtime_hooks=[],
              excludes=[],
@@ -15,12 +21,9 @@ a = Analysis(['figure_drawing_tool.py'],
              win_private_assemblies=False,
              cipher=block_cipher)
 
-
-a.datas += [ ('start_image.jpg', 'start_image.jpg', 'DATA')]
-a.datas += [ ('dark.qss', 'dark.qss', 'DATA')]
-
 pyz = PYZ(a.pure, a.zipped_data,
-             cipher=block_cipher)
+          cipher=block_cipher)
+
 exe = EXE(pyz,
           a.scripts,
           a.binaries,
@@ -30,8 +33,10 @@ exe = EXE(pyz,
           debug=False,
           strip=False,
           upx=True,
-          console=False , icon='figure_drawing_tool_icon.icns')
+          console=False,
+          icon='figure_drawing_tool_icon.icns')
+
 app = BUNDLE(exe,
              name='figure_drawing_tool.app',
              icon='figure_drawing_tool_icon.icns',
-             bundle_identifier=None)
+             bundle_identifier='com.figuredrawingtool.app')

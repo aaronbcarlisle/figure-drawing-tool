@@ -19,7 +19,26 @@ QLineEdit
 QComboBox
 {
     background-color: #2c2d2f;
+    border: 1px solid rgb(9, 10, 12);
     border-radius: 5px;
+    padding: 4px 4px;
+}
+
+QComboBox:disabled
+{
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(33, 37, 40), stop:1 rgb(13, 14, 16));
+    color: rgb(112, 117, 120);
+}
+
+QComboBox QAbstractItemView
+{
+    background-color: #2c2d2f;
+    padding: 2px;
+}
+
+QComboBox QAbstractItemView::item
+{
+    padding: 4px 8px;
 }
 
 QScrollArea
@@ -32,10 +51,67 @@ QFrame#background
     border: 2px solid rgb(9, 10, 12);
 }
 
+/* QSpinBox Base Styling */
 QSpinBox
 {
     background-color: #3b3b3b;
+    border: 1px solid rgb(9, 10, 12);
+    border-radius: 3px;
+    padding: 2px;
+    padding-right: 20px;  /* Space for up/down buttons */
 }
+
+/* Disabled state - gradient background matching disabled buttons */
+QSpinBox:disabled
+{
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(33, 37, 40), stop:1 rgb(13, 14, 16));
+    color: rgb(112, 117, 120);
+}
+
+/* Up/Down button container styling */
+QSpinBox::up-button,
+QSpinBox::down-button
+{
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(53, 57, 60), stop:1 rgb(33, 34, 36));
+    border: 1px solid rgb(9, 10, 12);
+    width: 16px;
+}
+
+QSpinBox::up-button
+{
+    border-top-right-radius: 3px;
+    subcontrol-origin: border;
+    subcontrol-position: top right;
+}
+
+QSpinBox::down-button
+{
+    border-bottom-right-radius: 3px;
+    subcontrol-origin: border;
+    subcontrol-position: bottom right;
+}
+
+/* Up/Down button hover - only when enabled */
+QSpinBox:enabled::up-button:hover,
+QSpinBox:enabled::down-button:hover
+{
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(63, 67, 70), stop:1 rgb(43, 44, 46));
+}
+
+/* Up/Down button pressed */
+QSpinBox::up-button:pressed,
+QSpinBox::down-button:pressed
+{
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(20, 21, 23), stop:1 rgb(48, 49, 51));
+}
+
+/* Disabled state for buttons - no hover effect */
+QSpinBox:disabled::up-button,
+QSpinBox:disabled::down-button
+{
+    background: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(33, 37, 40), stop:1 rgb(13, 14, 16));
+}
+
 
 QTreeWidget
 {
@@ -83,9 +159,16 @@ QPushButton:disabled
     background : qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 rgb(33, 37, 40), stop:1 rgb(13, 14, 16));
 }
 
-QPushButton:hover
+/* Only apply hover effect to enabled buttons */
+QPushButton:enabled:hover
 {
     color : rgb(0, 255, 0);
+}
+
+/* Disabled buttons should not change on hover */
+QPushButton:disabled:hover
+{
+    color : rgb(112, 117, 120);
 }
 
 QPushButton:pressed, QPushButton:on
