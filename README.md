@@ -1,5 +1,5 @@
 # Figure Drawing Tool
-![image](start_image.jpg)
+<img width="526" height="913" alt="image" src="https://github.com/user-attachments/assets/17b5c643-4649-474f-86b8-f8e96b351d62" />
 
 ## Using the Spec Files
 I use [pyinstaller](https://pyinstaller.org/en/stable/) to compile the apps. Unfortunately, in order to compile per OS you actually need to be on that os (a Virtual Box works just fine).
